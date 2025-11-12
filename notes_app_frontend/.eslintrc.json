@@ -1,0 +1,25 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "dist/",
+    "coverage/",
+    "**/*.js"
+  ],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "extends": ["eslint:recommended"],
+      "rules": {
+        "@typescript-eslint/no-unused-vars": "off"
+      }
+    },
+    {
+      "files": ["*.html"],
+      "rules": {}
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+<form (ngSubmit)="onSubmit()" aria-label="Note editor form">
+  <div class="field">
+    <label for="title">Title</label>
+    <input id="title" class="input" [(ngModel)]="title" name="title" required placeholder="Note title" />
+  </div>
+  <div class="field">
+    <label for="content">Content</label>
+    <textarea id="content" class="textarea" [(ngModel)]="content" name="content" rows="10" placeholder="Write your note..."></textarea>
+  </div>
+  <div class="actions">
+    <button type="submit" class="btn" aria-label="Save note">Save</button>
+    <button type="button" class="btn btn-secondary" (click)="cancel.emit()" aria-label="Cancel editing">Cancel</button>
+  </div>
+</form>

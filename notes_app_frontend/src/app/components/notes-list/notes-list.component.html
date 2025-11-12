@@ -1,0 +1,43 @@
+<div class="row">
+  <aside class="card list" aria-label="Notes list">
+    <div class="toolbar">
+      <input
+        class="input"
+        type="search"
+        [(ngModel)]="query"
+        (input)="applyFilter()"
+        placeholder="Search notes..."
+        aria-label="Search notes"
+      />
+      <button class="btn" (click)="showCreate = !showCreate" [attr.aria-expanded]="showCreate" aria-controls="create-area">
+        + New note
+      </button>
+    </div>
+
+    <ul class="items" role="listbox" aria-label="Available notes">
+      <li
+        *ngFor="let n of filtered"
+        tabindex="0"
+        (keydown.enter)="open(n)"
+        (click)="open(n)"
+        role="option"
+        class="item"
+        [attr.aria-label]="'Open note ' + n.title"
+      >
+        <div class="title">{{ n.title || 'Untitled' }}</div>
+        <div class="meta">{{ n.updatedAt | date:'short' }}</div>
+      </li>
+      <li *ngIf="filtered.length === 0" class="empty">No notes match your search.</li>
+    </ul>
+  </aside>
+
+  <section class="card detail">
+    <div id="create-area" *ngIf="showCreate" class="create-area">
+      <h2>Create note</h2>
+      <app-note-editor (saved)="onCreated($event)" (cancel)="showCreate=false"></app-note-editor>
+    </div>
+    <div *ngIf="!showCreate" class="placeholder">
+      <p>Select a note from the list or create a new one.</p>
+    </div>
+  </section>
+</div>

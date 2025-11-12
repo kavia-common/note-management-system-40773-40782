@@ -1,0 +1,20 @@
+<section class="card">
+  <div *ngIf="note; else missing">
+    <div class="topbar">
+      <a routerLink="/" class="btn btn-secondary" aria-label="Back to list">← Back</a>
+      <button class="btn btn-danger" (click)="requestDelete()" aria-label="Delete note">Delete</button>
+    </div>
+    <app-note-editor [note]="note" (saved)="onSaved($event)"></app-note-editor>
+  </div>
+  <ng-template #missing>
+    <p class="empty">Note not found.</p>
+    <a routerLink="/" class="btn btn-secondary">Go back</a>
+  </ng-template>
+
+  <app-confirm-dialog
+    [open]="confirmOpen"
+    title="Delete this note?"
+    message="This action cannot be undone."
+    (closed)="onConfirmDelete($event)"
+  ></app-confirm-dialog>
+</section>

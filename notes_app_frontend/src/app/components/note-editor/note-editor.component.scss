@@ -1,0 +1,13 @@
+.field {
+  margin-bottom: 12px;
+  display: grid;
+  gap: 6px;
+}
+label {
+  font-weight: 600;
+  color: var(--muted);
+}
+.actions {
+  display: flex;
+  gap: 8px;
+}
